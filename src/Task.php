@@ -127,5 +127,18 @@
             return $categories;
         }
 
+        static function findCompletedTasks()
+        {
+            $found_tasks = array();
+            $tasks = Task::getAll();
+            foreach($tasks as $task) {
+                $task_completion = $task->getCompletion();
+                if ($task_completion == 1) {
+                  array_push($found_tasks, $task);
+                }
+            }
+            return $found_tasks;
+        }
+
     }
 ?>
