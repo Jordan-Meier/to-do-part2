@@ -81,7 +81,7 @@
 
         function getTasks()
         {
-            $query = $GLOBALS['DB']->query("SELECT task_id FROM categories_tasks WHERE category_id = {$this->getId()};");
+            $query = $GLOBALS['DB']->query("SELECT task_id FROM categories_tasks WHERE category_id = {$this->getId()} ORDER BY due_date;");
             $task_ids = $query->fetchAll(PDO::FETCH_ASSOC);
 
             $tasks = array();

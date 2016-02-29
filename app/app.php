@@ -87,6 +87,20 @@
         return $app['twig']->render('task.html.twig', array('task' => $task, 'categories' => $task->getCategories(), 'all_categories' => Category::getAll()));
     });
 
+    $app->get("/task/{id}/edit", function($id) use ($app) {
+        $task = Task::find($id);
+        return $app['twig']->render('task_edit.html.twig', array('tasks' => $task));
+    });
+
+    $app->patch("/tasks/{id}", function($id) use ($app) {
+        $new_description = $_POST['description'];
+        $new_due_date = $_POST['due_date'];
+        $task = Task::find($id);
+
+        $task->update($new_description, $new_due_date);
+        return $app['twig']->render('task.html.twig', array('task' => $task, 'categories' => $task->getTasks(), 'all_tasks' => Task::getAll()));
+    });
+
     // $app->post("/delete_tasks/{id}", function($id) use ($app) {
     //     $category_id = Category::find($id);
     //     Task::deleteFromCategory($category_id->getId());
