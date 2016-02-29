@@ -184,13 +184,14 @@
         {
             //Arrange
             $name = "Work stuff";
-            $id = 1;
-            $test_category = new Category($name, $id);
+            // $id = 1;
+            $test_category = new Category($name, $id = null);
             $test_category->save();
 
             $description = "File reports";
-            $id2 = 2;
-            $test_task = new Task($description, $id2);
+            // $id2 = 2;
+            $due_date = "2016-04-10";
+            $test_task = new Task($description, $due_date, $id2 = null);
             $test_task->save();
 
             //Act
@@ -204,18 +205,20 @@
         {
             //Arrange
             $name = "Home stuff";
-            $id = 1;
-            $test_category = new Category($name, $id);
+            // $id = 1;
+            $test_category = new Category($name, $id = null);
             $test_category->save();
 
-            $description = "Wash the dog";
-            $id2 = 2;
-            $test_task = new Task($description, $id2);
+            $description2 = "Wash the dog";
+            // $id2 = 2;
+            $due_date2 = "2016-04-10";
+            $test_task = new Task($description2, $due_date2, $id2 = null);
             $test_task->save();
 
-            $description2 = "Take out the trash";
-            $id3 = 3;
-            $test_task2 = new Task($description2, $id3);
+            $description3 = "Take out the trash";
+            // $id3 = 3;
+            $due_date3 = "2016-05-03";
+            $test_task2 = new Task($description3, $due_date3, $id3 = null);
             $test_task2->save();
 
             //Act
