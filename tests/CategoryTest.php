@@ -71,16 +71,16 @@
             $test_category = new Category($name, $id);
             $test_category->save();
 
-            $test_category_id = $test_category->getId();
+
 
             $description = "Email client";
             $due_date = "1990-04-07";
-            $test_task = new Task($description, $due_date, $id, $test_category_id);
+            $test_task = new Task($description, $due_date, $id);
             $test_task->save();
 
             $description2 = "Meet with boss";
             $due_date2 = "2016-06-13";
-            $test_task2 = new Task($description2, $due_date2, $id, $test_category_id);
+            $test_task2 = new Task($description2, $due_date2, $id);
             $test_task2->save();
 
             //Act
