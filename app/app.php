@@ -95,11 +95,12 @@
     $app->patch("/tasks/{id}", function($id) use ($app) {
         $new_description = $_POST['description'];
         $new_due_date = $_POST['due_date'];
+        $new_completion = $_POST['completion'];
         $task = Task::find($id);
-        $task->update($new_description, $new_due_date);
+        $task->update($new_description, $new_due_date, $new_completion);
         return $app['twig']->render('task.html.twig', array('task' => $task, 'all_tasks' => Task::getAll()));
     });
-    // 
+    //
     // $app->delete("/category/{id}/tasks_delete", function($id) use ($app) {
     //     $category = Category::find($id);
     //     $category->deleteTasks();
