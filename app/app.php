@@ -17,7 +17,7 @@
     ));
 
     $app->get("/", function() use ($app) {
-        return $app['twig']->render('index.html.twig', array('categories' => Category::getAll()));
+        return $app['twig']->render('index.html.twig', array('categories' => Category::getAll(), 'tasks' => Task::getAll()));
     });
 
     $app->get("/tasks", function() use ($app) {
