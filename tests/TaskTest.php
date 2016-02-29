@@ -246,5 +246,34 @@
             $this->assertEquals($test_task->getCategories(), [$test_category, $test_category2]);
         }
 
+        function test_findCompletedTasks()
+        {
+            //Arrange
+            // $name = "Home stuff";
+            // $id = null;
+            // $test_category = new Category($name, $id);
+            // $test_category->save();
+
+            $description = "Wash the dog";
+            $due_date = "2016-02-28";
+            $completion = 1;
+            $id = null;
+            $test_task = new Task($description, $due_date, $completion, $id);
+            $test_task->save();
+
+            $description2 = "Water the lawn";
+            $due_date2 = "2016-02-27";
+            $completion2 = 1;
+            $id = null;
+            $test_task2 = new Task($description2, $due_date2, $completion2, $id);
+            $test_task2->save();
+
+            //Act
+            $result = Task::findCompletedTasks();
+
+            //Assert
+            $this->assertEquals([$test_task2, $test_task], $result);
+        }
+
     }
 ?>
