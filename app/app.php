@@ -52,11 +52,16 @@
         return $app['twig']->render('task.html.twig', array('task' => $task, 'categories' => $task->getCategories(), 'all_categories' => Category::getAll()));
     });
 
-    $app->post("/delete_tasks/{id}", function($id) use ($app) {
-        $category_id = Category::find($id);
-        Task::deleteFromCategory($category_id->getId());
-        return $app['twig']->render('category.html.twig', array('category' => $category_id));
-    });
+    // $app->post("/delete_tasks/{id}", function($id) use ($app) {
+    //     $category_id = Category::find($id);
+    //     Task::deleteFromCategory($category_id->getId());
+    //     return $app['twig']->render('category.html.twig', array('category' => $category_id));
+    // });
+
+    $app->post("/delete_tasks", function() use ($app) {
+       Task::deleteAll();
+       return $app['twig']->render('index.html.twig');
+   });
 
     $app->post("/delete_categories", function() use ($app) {
        Category::deleteAll();
