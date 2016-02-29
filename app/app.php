@@ -99,11 +99,11 @@
         $task->update($new_description, $new_due_date);
         return $app['twig']->render('task.html.twig', array('task' => $task, 'all_tasks' => Task::getAll()));
     });
-
-    // $app->post("/delete_tasks/{id}", function($id) use ($app) {
-    //     $category_id = Category::find($id);
-    //     Task::deleteFromCategory($category_id->getId());
-    //     return $app['twig']->render('category.html.twig', array('category' => $category_id));
+    // 
+    // $app->delete("/category/{id}/tasks_delete", function($id) use ($app) {
+    //     $category = Category::find($id);
+    //     $category->deleteTasks();
+    //     return $app['twig']->render('categorys.html.twig', array('category' => $category, 'tasks' => $category->getTasks()));
     // });
 
     $app->post("/delete_tasks", function() use ($app) {
