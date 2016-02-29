@@ -198,16 +198,18 @@
             //Arrange
             $description = "Wash the dog";
             $id = 1;
-            $test_task = new Task($description, $id);
+            $due_date = "2016-03-01";
+            $test_task = new Task($description, $due_date, $id);
             $test_task->save();
 
             $new_description = "Clean the dog";
+            $new_due_date = "2016-03-05";
 
             //Act
-            $test_task->update($new_description);
+            $test_task->update($new_description, $new_due_date);
 
             //Assert
-            $this->assertEquals("Clean the dog", $test_task->getDescription());
+            $this->assertEquals(["Clean the dog", "2016-03-05"], [$test_task->getDescription(), $test_task->getDueDate()]);
         }
 
         function testDeleteTask()
@@ -215,12 +217,14 @@
             //Arrange
             $description = "Wash the dog";
             $id = 1;
-            $test_task = new Task($description, $id);
+            $due_date = "2016-03-01";
+            $test_task = new Task($description, $due_date, $id);
             $test_task->save();
 
             $description2 = "Water the lawn";
             $id2 = 2;
-            $test_task2 = new Task($description2, $id2);
+            $due_date2 = "2016-03-07";
+            $test_task2 = new Task($description2, $due_date2, $id2);
             $test_task2->save();
 
 
