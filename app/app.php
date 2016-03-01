@@ -119,6 +119,11 @@
         return $app['twig']->render('category.html.twig', array('category' => $category, 'categories' => Category::getAll(), 'tasks' => $category->getTasks(), 'all_tasks' => Task::getAll()));
     });
 
+    $app->get("/completed_tasks", function() use ($app) {
+        $tasks = Task::findCompletedTasks();
+        return $app['twig']->render('completed_tasks.html.twig', array('completed_tasks' => $tasks));
+    });
+
     return $app;
 
 ?>

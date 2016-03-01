@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>To Do List</title>
+    </head>
+    <body>
+
+        {% if completed_tasks is not empty %}
+            <p>Here are all your completed tasks:</p>
+            <ul>
+                {% for task in completed_tasks %}
+                    <li><a href="/tasks/{{ task.getId }}">{{ task.getDescription }}</a>,
+                        due date: {{ task.getDueDate }},
+                        is task complete: {{ task.getCompletion }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            {% else %}
+            <h4>You have achieved nothing.</h4>
+
+        {% endif %}
+
+        <p><a href='/tasks'>Return to Tasks</a></p>
+        <p><a href='/'>Home</a></p>
+
+    </body>
+</html>
