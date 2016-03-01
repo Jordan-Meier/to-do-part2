@@ -11,8 +11,7 @@
             <ul>
                 {% for task in completed_tasks %}
                     <li><a href="/tasks/{{ task.getId }}">{{ task.getDescription }}</a>,
-                        due date: {{ task.getDueDate }},
-                        is task complete: {{ task.getCompletion }}
+                        due date: {{ task.getDueDate }}
                     </li>
                 {% endfor %}
             </ul>
